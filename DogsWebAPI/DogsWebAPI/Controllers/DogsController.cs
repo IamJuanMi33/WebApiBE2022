@@ -19,7 +19,7 @@ namespace DogsWebAPI.Controllers
         public async Task<ActionResult<List<Dog>>> Get()
         {
             //return await dbContext.Dogs.ToListAsync();
-            return await dbContext.Dogs.Include(x => x.kennels).ToListAsync;
+            return await dbContext.Dogs.Include(x => x.kennels).ToListAsync();
         }
 
         [HttpPost]

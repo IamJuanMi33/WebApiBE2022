@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace DogsWebAPI
 {
@@ -13,6 +14,9 @@ namespace DogsWebAPI
 
         public void ConfigureServices(IServiceCollection service)
         {
+
+            service.AddControllers().AddJsonOptions(x =>
+            x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
             service.AddControllers();
             service.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
