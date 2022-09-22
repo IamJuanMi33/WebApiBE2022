@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\DogsWebAPI\\DogsWebAPI\\DogsWebAPI.csproj": {}
+    "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\Test\\DogsWebAPI\\DogsWebAPI\\DogsWebAPI.csproj": {}
   },
   "projects": {
-    "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\DogsWebAPI\\DogsWebAPI\\DogsWebAPI.csproj": {
+    "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\Test\\DogsWebAPI\\DogsWebAPI\\DogsWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\DogsWebAPI\\DogsWebAPI\\DogsWebAPI.csproj",
+        "projectUniqueName": "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\Test\\DogsWebAPI\\DogsWebAPI\\DogsWebAPI.csproj",
         "projectName": "DogsWebAPI",
-        "projectPath": "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\DogsWebAPI\\DogsWebAPI\\DogsWebAPI.csproj",
+        "projectPath": "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\Test\\DogsWebAPI\\DogsWebAPI\\DogsWebAPI.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\DogsWebAPI\\DogsWebAPI\\obj\\",
+        "outputPath": "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\Test\\DogsWebAPI\\DogsWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -45,9 +45,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "EntityFramework": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.4.4, )"
+              "version": "[7.0.0-rc.1.22426.7, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -61,7 +61,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.4.0, )"
             }
           },
           "imports": [
