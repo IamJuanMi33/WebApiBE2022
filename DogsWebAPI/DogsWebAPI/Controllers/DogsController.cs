@@ -6,7 +6,7 @@ namespace DogsWebAPI.Controllers
 {
     [ApiController]
     [Route("dogs")]
-    public class DogsController: ControllerBase
+    public class DogsController : ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
 
@@ -15,15 +15,50 @@ namespace DogsWebAPI.Controllers
             this.dbContext = dbContext;
         }
 
-        [HttpGet]
+        [HttpGet] //api/dog
+        [HttpGet("Listado")] //api/dogs/listado
+        [HttpGet("/Listado")] //Listado
         public async Task<ActionResult<List<Dog>>> Get()
         {
-            //return await dbContext.Dogs.ToListAsync();
             return await dbContext.Dogs.Include(x => x.kennels).ToListAsync();
         }
 
+        [HttpGet("primero")]
+        public async Task<ActionResult<Dog>> FirstDog([FromHeader] int value, [FromQuery] string dog, [FromQuery] int dogId)
+        {
+            return await dbContext.Dogs.FirstOrDefaultAsync();
+        }
+
+        [HttpGet("primero2")]
+        public ActionResult<Dog> FirstDog()
+        {
+            return new Dog() { Name = "DOS" };
+        }
+
+        [HttpGet("{id:int}/{param=Vito}")]
+        public async Task<ActionResult<Dog>> Get(int id, string param)
+        {
+            var dog = await dbContext.Dogs.FirstOrDefaultAsync(x => x.Id == id);
+
+            if(dog == null)
+                return NotFound();
+
+            return dog;
+        }
+
+        [HttpGet("{nombre}")]
+        public async Task<ActionResult<Dog>> Get([FromRoute] string nombre)
+        {
+            var dog = await dbContext.Dogs.FirstOrDefaultAsync(x => x.Name.Contains(nombre));
+
+            if (dog == null)
+                return NotFound();
+
+            return dog;
+        }
+
         [HttpPost]
-        public async Task<ActionResult> Post(Dog dog)
+        public async Task<ActionResult> Post([FromBody] Dog dog)
         {
             dbContext.Add(dog);
             await dbContext.SaveChangesAsync();
