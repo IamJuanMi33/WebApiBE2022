@@ -1,25 +1,65 @@
 ﻿using DogsWebAPI.Entities;
+using DogsWebAPI.Filters;
+using DogsWebAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace DogsWebAPI.Controllers
 {
     [ApiController]
-    [Route("dogs")]
+    [Route("api/dogs")]
+    //[Authorize]
     public class DogsController : ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
+        private readonly IService service;
+        private readonly ServiceTransient serviceTransient;
+        private readonly ServiceScoped serviceScoped;
+        private readonly ServiceSingleton serviceSingleton;
+        private readonly ILogger<DogsController> logger;
 
-        public DogsController(ApplicationDbContext dbContext)
+        public DogsController(ApplicationDbContext dbContext, IService service,
+            ServiceTransient serviceTransient, ServiceScoped serviceScoped,
+            ServiceSingleton serviceSingleton, ILogger<DogsController> logger)
         {
             this.dbContext = dbContext;
+            this.service = service;
+            this.serviceTransient = serviceTransient;
+            this.serviceScoped = serviceScoped;
+            this.serviceSingleton = serviceSingleton;
+            this.logger = logger;
         }
 
-        [HttpGet] //api/dog
-        [HttpGet("Listado")] //api/dogs/listado
-        [HttpGet("/Listado")] //Listado
+        [HttpGet("GUID")]
+        [ResponseCache(Duration = 10)]
+        [ServiceFilter(typeof(ActionFilter))]
+        public ActionResult ObtenerGuid()
+        {
+            logger.LogInformation("Durante la ejecución");
+            return Ok(new
+            {
+                DogsContrllerTransient = serviceTransient.guid,
+                ServiceA_Transient = service.GetTransient(),
+                DogsControllerScoped = serviceScoped.guid,
+                ServiceA_Scoped = service.GetScoped(),
+                DogsControllerSinleton = serviceSingleton.guid,
+                ServiceA_Singleton = service.GetSingleton(),
+            });
+        }
+
+        [HttpGet]
+        [HttpGet("listado")] 
+        [HttpGet("/listado")]
+        //[ResponseCache(Duration = 15)]
+        //[Authorize]
+        //[ServiceFilter(typeof(ActionFilter))]
         public async Task<ActionResult<List<Dog>>> Get()
         {
+            throw new NotImplementedException();
+            logger.LogInformation("Se obtitene el listado de perros");
+            logger.LogWarning("Mensaje de prueba warning");
+            service.EjecutarJob();
             return await dbContext.Dogs.Include(x => x.kennels).ToListAsync();
         }
 
@@ -35,7 +75,8 @@ namespace DogsWebAPI.Controllers
             return new Dog() { Name = "DOS" };
         }
 
-        [HttpGet("{id:int}/{param=Vito}")]
+        //[HttpGet("{id:int}/{param=Vito}")]
+        [HttpGet("{param?}")] //Se puede usar ? para que no sea obligatorio el parámetro
         public async Task<ActionResult<Dog>> Get(int id, string param)
         {
             var dog = await dbContext.Dogs.FirstOrDefaultAsync(x => x.Id == id);
@@ -46,13 +87,16 @@ namespace DogsWebAPI.Controllers
             return dog;
         }
 
-        [HttpGet("{nombre}")]
+        [HttpGet("obtenerDog/{nombre}")]
         public async Task<ActionResult<Dog>> Get([FromRoute] string nombre)
         {
             var dog = await dbContext.Dogs.FirstOrDefaultAsync(x => x.Name.Contains(nombre));
 
             if (dog == null)
+            {
+                logger.LogError("No se encontró el perro");
                 return NotFound();
+            }
 
             return dog;
         }
@@ -60,7 +104,13 @@ namespace DogsWebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] Dog dog)
         {
-            dbContext.Add(dog);
+            //Validar desde el controlador
+            var existePerroMismoNombre = await dbContext.Dogs.AnyAsync(x => x.Name == dog.Name);
+
+            if (existePerroMismoNombre)
+            {
+                return BadRequest("Ya existe un perro con ese nombre");
+            }    
             await dbContext.SaveChangesAsync();
             return Ok();
         }

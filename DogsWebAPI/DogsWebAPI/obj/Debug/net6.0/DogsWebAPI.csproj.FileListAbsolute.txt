@@ -162,3 +162,5 @@ D:\Archivos DD\Papo\Documentos\FCFM\7mo\BackEnd\Test\DogsWebAPI\DogsWebAPI\obj\D
 D:\Archivos DD\Papo\Documentos\FCFM\7mo\BackEnd\Test\DogsWebAPI\DogsWebAPI\obj\Debug\net6.0\DogsWebAPI.pdb
 D:\Archivos DD\Papo\Documentos\FCFM\7mo\BackEnd\Test\DogsWebAPI\DogsWebAPI\obj\Debug\net6.0\DogsWebAPI.genruntimeconfig.cache
 D:\Archivos DD\Papo\Documentos\FCFM\7mo\BackEnd\Test\DogsWebAPI\DogsWebAPI\obj\Debug\net6.0\ref\DogsWebAPI.dll
+D:\Archivos DD\Papo\Documentos\FCFM\7mo\BackEnd\DogsWebAPI\DogsWebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Archivos DD\Papo\Documentos\FCFM\7mo\BackEnd\DogsWebAPI\DogsWebAPI\bin\Debug\net6.0\DogsWebAPI.staticwebassets.runtime.json

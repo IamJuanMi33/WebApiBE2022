@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "oJQopUJz/rz8ohnDn/zW5ocLBusssh3t1eBTbUUlCbk=",
+  "Hash": "dYCqBQJmGWAo4Dc1Md4PTiQUH+Zm2gwuza1m/w+Gvkk=",
   "Source": "DogsWebAPI",
   "BasePath": "_content/DogsWebAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "DogsWebAPI\\wwwroot",
+      "Source": "DogsWebAPI",
+      "ContentRoot": "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\DogsWebAPI\\DogsWebAPI\\wwwroot\\",
+      "BasePath": "_content/DogsWebAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\DogsWebAPI\\DogsWebAPI\\wwwroot\\Archivo 1.txt",
+      "SourceId": "DogsWebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\DogsWebAPI\\DogsWebAPI\\wwwroot\\",
+      "BasePath": "_content/DogsWebAPI",
+      "RelativePath": "Archivo 1.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Archivo 1.txt"
+    }
+  ]
 }

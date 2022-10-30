@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "eGajWzq+neon2pebEod7BGLwKcm3cdbIAMJL4UW/N7BBFaKxRZdDTooYZvy3mx19nmpXlXJYEJq3fN24lm3YuA==",
+  "dgSpecHash": "Y7AMZGaFOK2kxq98sdnf2lY/6rhnpvuG0j1mB+pbmGqjYlf3+XfAD+uRAd1udFmyFyEbUiKXPPFX3W7FMWjxxA==",
   "success": true,
   "projectFilePath": "D:\\Archivos DD\\Papo\\Documentos\\FCFM\\7mo\\BackEnd\\DogsWebAPI\\DogsWebAPI\\DogsWebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.3\\microsoft.aspnetcore.authentication.jwtbearer.6.0.3.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.0\\microsoft.data.sqlclient.5.0.0.nupkg.sha512",
