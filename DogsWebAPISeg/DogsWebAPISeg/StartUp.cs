@@ -52,6 +52,8 @@ namespace DogsWebAPISeg
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DgosWebAPISeg", Version = "v1" });
             });
 
+            service.AddAutoMapper(typeof(StartUp));
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<StartUp> logger)
