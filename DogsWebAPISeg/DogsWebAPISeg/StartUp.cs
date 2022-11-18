@@ -98,7 +98,19 @@ namespace DogsWebAPISeg
                 });
             });
 
-            service.AddControllers();
+            //var builder = WebApplication.CreateBuilder();
+
+            //builder.Services.AddCors(options =>
+            //{
+            //    options.AddDefaultPolicy(
+            //        policy =>
+            //        {
+            //            policy.WithOrigins("https://apirequest.io")
+            //            .AllowAnyMethod()
+            //            .AllowAnyHeader();
+            //        });
+            //});
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<StartUp> logger)
