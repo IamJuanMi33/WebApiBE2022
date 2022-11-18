@@ -1,32 +1,32 @@
-//using DogsWebAPISeg;
-//using DogsWebAPISeg.CustomConfigurationProvider;
+using DogsWebAPISeg;
+//using dogswebapiseg.customconfigurationprovider;
 
-//var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
-//builder.Configuration.AddSecurityConfiguration();
+//builder.Configuration.addsecurityconfiguration();
 
-//var startup = new StartUp(builder.Configuration);
-//startup.ConfigureServices(builder.Services);
+var startup = new StartUp(builder.Configuration);
+startup.ConfigureServices(builder.Services);
 
 
-//var app = builder.Build();
+var app = builder.Build();
 
-//var serviceLogger = (ILogger<StartUp>)app.Services.GetService(typeof(ILogger<StartUp>));
+var servicelogger = (ILogger<StartUp>)app.Services.GetService(typeof(ILogger<StartUp>));
 
-//startup.Configure(app, app.Environment, serviceLogger);
+startup.Configure(app, app.Environment, servicelogger);
 
-//app.Run();
+app.Run();
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        //program execution starts from here
-        System.Console.WriteLine("Total Arguments: {0}", args.Length);
+//class Program
+//{
+//    static void Main(string[] args)
+//    {
+//        //program execution starts from here
+//        System.Console.WriteLine("Total Arguments: {0}", args.Length);
 
-        System.Console.Write("Arguments: ");
+//        System.Console.Write("Arguments: ");
 
-        foreach (var arg in args)
-            System.Console.Write(arg + ", ");
-    }
-}
+//        foreach (var arg in args)
+//            System.Console.Write(arg + ", ");
+//    }
+//}

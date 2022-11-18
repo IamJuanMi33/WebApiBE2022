@@ -4,6 +4,7 @@ using DogsWebAPISeg;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DogsWebAPISeg.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221117230857_DogsSystem")]
+    partial class DogsSystem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,7 +40,7 @@ namespace DogsWebAPISeg.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Dogs", (string)null);
+                    b.ToTable("Dogs");
                 });
 
             modelBuilder.Entity("DogsWebAPISeg.Entities.DogKennel", b =>
@@ -55,7 +58,7 @@ namespace DogsWebAPISeg.Migrations
 
                     b.HasIndex("KennelId");
 
-                    b.ToTable("DogKennel", (string)null);
+                    b.ToTable("DogKennel");
                 });
 
             modelBuilder.Entity("DogsWebAPISeg.Entities.Kennel", b =>
@@ -76,7 +79,7 @@ namespace DogsWebAPISeg.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Kennels", (string)null);
+                    b.ToTable("Kennels");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

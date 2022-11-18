@@ -8,9 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ConfigurationProvider\**" />
+    <Content Remove="ConfigurationProvider\**" />
+    <EmbeddedResource Remove="ConfigurationProvider\**" />
+    <None Remove="ConfigurationProvider\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\CustomConfigurationController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0-rc.1.22426.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0-rc.1.22426.7">
       <PrivateAssets>all</PrivateAssets>
@@ -22,5 +34,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="keyjwt" /></VisualStudio></ProjectExtensions>
 
 </Project>

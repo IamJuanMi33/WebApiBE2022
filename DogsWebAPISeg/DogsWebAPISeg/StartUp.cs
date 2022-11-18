@@ -8,6 +8,7 @@ using System.Text.Json.Serialization;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Identity;
 
 namespace DogsWebAPISeg
 {
@@ -50,10 +51,55 @@ namespace DogsWebAPISeg
             service.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DgosWebAPISeg", Version = "v1" });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new String[]{}
+                    }
+                });
             });
 
             service.AddAutoMapper(typeof(StartUp));
 
+            service.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            service.AddAuthorization(options =>
+            {
+                options.AddPolicy("EsAdmin", policy => policy.RequireClaim("esAdmin"));
+                options.AddPolicy("EsUsuario", policy => policy.RequireClaim("esUsuario"));
+            });
+
+            service.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost").AllowAnyHeader().AllowAnyMethod();
+                    //builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                    
+                });
+            });
+
+            service.AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<StartUp> logger)
@@ -89,16 +135,16 @@ namespace DogsWebAPISeg
             //app.UseMiddleware<ResponseHttpMiddleware>();
 
             //Método para utilizar la clase Middleware sin exponer la clase
-            app.UseResponseHttpMiddleware();
+            //app.UseResponseHttpMiddleware();
 
 
-            app.Map("/mapping", app =>
-            {
-                app.Run(async context =>
-                {
-                    await context.Response.WriteAsync("Interceptando las peticiones");
-                });
-            });
+            //app.Map("/mapping", app =>
+            //{
+            //    app.Run(async context =>
+            //    {
+            //        await context.Response.WriteAsync("Interceptando las peticiones");
+            //    });
+            //});
 
             //app.Run(async context =>
             //{
@@ -117,9 +163,11 @@ namespace DogsWebAPISeg
 
             app.UseRouting();
 
-            app.UseResponseCaching();
+            app.UseCors();
 
-            //app.UseAuthorization();
+            //app.UseResponseCaching();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

@@ -10,7 +10,7 @@ namespace DogsWebAPISeg.Controllers
 {
     [ApiController]
     [Route("dogs")]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
     public class DogsController : ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
@@ -57,7 +57,7 @@ namespace DogsWebAPISeg.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] DogDTOWithKennels dogDto)
+        public async Task<ActionResult> Post([FromBody] DogDTO dogDto)
         {
             var existePerroMismoNombre = await dbContext.Dogs.AnyAsync(x => x.Name == dogDto.Name);
 
