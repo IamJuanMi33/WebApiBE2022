@@ -93,8 +93,7 @@ namespace DogsWebAPISeg
             {
                 options.AddDefaultPolicy(builder =>
                 {
-                    builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost").AllowAnyHeader().AllowAnyMethod();
-                    //builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                    builder.WithOrigins("https://www.apirequest.io", "https://google.com").AllowAnyMethod().AllowAnyHeader();
                     
                 });
             });
